@@ -1,0 +1,60 @@
+plugins {
+    id 'com.android.application'
+
+    //apply plugin: 'com.chaquo.python' //3
+    id 'com.chaquo.python' //3
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.example.firstpythontoandroid"
+        minSdkVersion 16
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        sourceSets{ //4
+            main{
+                python{
+                    srcDirs = ["src/main/python"]
+                }
+            }
+        }
+
+        ndk { //5
+            abiFilters "armeabi-v7a", "x86"
+        }
+
+        python{ //7 then sync
+            buildPython = "C:/Users/HH/AppData/Local/Programs/Python/Python36/python.exe"
+        }
+
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
