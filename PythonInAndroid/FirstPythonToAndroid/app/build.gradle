@@ -30,8 +30,13 @@ android {
             abiFilters "armeabi-v7a", "x86"
         }
 
-        python{ //7 then sync
+        python{ //6 then sync
             buildPython = "C:/Users/HH/AppData/Local/Programs/Python/Python36/python.exe"
+        }
+        python{ //7
+            pip{
+                install "googletrans"
+            }
         }
 
 
